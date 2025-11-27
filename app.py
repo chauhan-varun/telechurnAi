@@ -33,13 +33,33 @@ def get_metrics(model, X, y):
     }
 
 def predict_churn(model, data):
-    if 'churned' in data.columns:
-        data = data.drop('churned', axis=1)
+    from clean_data import clean_dataset
+    from encode_data import encode_features
+    from feature_engineering import engineer_features
+    import tempfile
+    import os
     
-    predictions = model.predict(data)
-    probabilities = model.predict_proba(data)[:, 1]
-    
-    return predictions, probabilities
+    with tempfile.TemporaryDirectory() as tmpdir:
+        raw_path = os.path.join(tmpdir, 'raw.csv')
+        cleaned_path = os.path.join(tmpdir, 'cleaned.csv')
+        encoded_path = os.path.join(tmpdir, 'encoded.csv')
+        final_path = os.path.join(tmpdir, 'final.csv')
+        
+        data.to_csv(raw_path, index=False)
+        
+        clean_dataset(raw_path, cleaned_path)
+        encode_features(cleaned_path, encoded_path)
+        engineer_features(encoded_path, final_path)
+        
+        processed_data = pd.read_csv(final_path)
+        
+        if 'churned' in processed_data.columns:
+            processed_data = processed_data.drop('churned', axis=1)
+        
+        predictions = model.predict(processed_data)
+        probabilities = model.predict_proba(processed_data)[:, 1]
+        
+        return predictions, probabilities
 
 train_data = load_data()
 model = load_model()
@@ -288,6 +308,16 @@ with tab4:
     
     display_df = high_risk[['risk_score'] + display_cols].copy()
     display_df['risk_score'] = display_df['risk_score'].round(1)
+    
+    if 'tenure_months' in display_df.columns:
+        display_df['tenure_months'] = display_df['tenure_months'].round(0).astype(int)
+    if 'monthly_charges' in display_df.columns:
+        display_df['monthly_charges'] = display_df['monthly_charges'].round(2)
+    if 'num_services' in display_df.columns:
+        display_df['num_services'] = display_df['num_services'].astype(int)
+    if 'num_support_calls' in display_df.columns:
+        display_df['num_support_calls'] = display_df['num_support_calls'].astype(int)
+    
     display_df.columns = ['Risk %'] + [col.replace('_', ' ').title() for col in display_cols]
     display_df = display_df.reset_index(drop=True)
     
