@@ -35,7 +35,6 @@ def clean_dataset(file_path, output_path):
 
 def main():
     clean_dataset('telecom_churn_train.csv', 'telecom_churn_train_cleaned.csv')
-    print("Data cleaning complete!")
 
 
 if __name__ == "__main__":
