@@ -1,6 +1,6 @@
 # TeleChurnAi - Customer Churn Prediction 📊
 
-An AI-powered customer churn prediction system for telecom companies, achieving **92% accuracy** in identifying customers at risk of churning. Built with machine learning and an interactive Streamlit dashboard for real-time insights and predictions.
+An AI-powered customer churn prediction system for telecom companies, achieving **98.1% accuracy** in identifying customers at risk of churning. Built with machine learning and an interactive Streamlit dashboard for real-time insights and predictions.
 
 ## 🎯 Overview
 
@@ -8,7 +8,7 @@ TeleChurnAi helps telecom companies predict and prevent customer churn by analyz
 
 ### Key Features
 
-- **High Accuracy Predictions**: 92% accuracy using Random Forest classifier
+- **High Accuracy Predictions**: 98.1% accuracy using Random Forest classifier
 - **Complete ML Pipeline**: Automated data cleaning, encoding, feature engineering, and model training
 - **Interactive Dashboard**: Real-time visualizations and insights using Streamlit
 - **Batch Predictions**: Upload CSV files for bulk churn predictions
@@ -188,10 +188,10 @@ Creates 20+ derived features:
 
 | Metric    | Score  |
 |-----------|--------|
-| Accuracy  | 92.0%  |
-| Precision | 91.5%  |
-| Recall    | 89.3%  |
-| F1 Score  | 0.904  |
+| Accuracy  | 98.1%  |
+| Precision | 99.7%  |
+| Recall    | 92.6%  |
+| F1 Score  | 0.960  |
 
 ## 💡 Use Cases
 
