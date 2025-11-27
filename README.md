@@ -226,26 +226,6 @@ predictions = model.predict(processed_data)
 probabilities = model.predict_proba(processed_data)[:, 1]
 ```
 
-## 🚀 Deployment
-
-### Local Deployment
-```bash
-streamlit run app.py
-```
-
-### Cloud Deployment (Streamlit Cloud)
-1. Push code to GitHub
-2. Connect repository to Streamlit Cloud
-3. Deploy with one click
-
-### VM Deployment
-1. Install dependencies on VM
-2. Run with nohup:
-   ```bash
-   nohup streamlit run app.py --server.port 8501 &
-   ```
-3. Configure firewall to allow port 8501
-
 ## 📝 Data Requirements
 
 Your CSV file should include columns such as:
