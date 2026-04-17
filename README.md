@@ -14,6 +14,18 @@ This platform transforms raw customer data into actionable business intelligence
 - **Modular Architecture**: A clean, scalable project structure separating the data pipeline from the visualization layer.
 - **Interactive Storytelling**: A rich Streamlit dashboard providing real-time metrics, confusion matrices, and feature importance rankings.
 - **Bulk Risk Assessment**: Scalable CSV upload feature for batch processing thousands of customer profiles in seconds.
+- **Revenue at Risk**: Real-time financial forecasting identifying the potential monthly revenue lost to high-risk churners.
+
+---
+
+## 💎 Dashboard Features
+
+The application is structured into 5 high-impact modules:
+- **📊 Overview**: Real-time monitoring of churn rates, risk distribution, and model confidence (Confusion Matrix).
+- **🔧 Data Pipeline**: A transparent view into the 4-stage processing lifecycle with a "Run Full Pipeline" automation trigger.
+- **🔮 Live Prediction**: Direct CSV ingestion module for generating batch churn forecasts.
+- **⚠️ High Risk Analysis**: Detailed customer profiling for the top 20 most vulnerable accounts.
+- **📈 Feature Insights**: Visual ranking of the top 15 churn drivers to inform business strategy.
 
 ---
 
@@ -54,7 +66,11 @@ TeleChurn AI utilizes a 4-stage automated pipeline, accessible directly through 
 
 1.  **🧹 Cleaning & Imputation**: Uses **Iterative/KNN Imputers** to handle missing values and removes duplicate noise to ensure data integrity.
 2.  **🔢 Feature Encoding**: Automatically transforms categorical variables (Contract types, Payment methods) into high-dimensional numeric vectors.
-3.  **🛠️ Advanced Feature Engineering**: Generates **20+ derived metrics**, including Service Intensity Scores, Charge-to-Income Ratios, and Interaction Features that capture complex customer behavior patterns.
+3.  **🛠️ Advanced Feature Engineering**: Generates **20+ derived metrics**, including:
+    *   **Financials**: Approximate Lifetime Value (LTV), Charge-to-Income ratios.
+    *   **Usage**: Data/Call/SMS intensity per month, service bundle counts.
+    *   **Tenure**: Segmented lifecycle stages (New vs. Long-term).
+    *   **Interactions**: Age/Contract cross-features, Activity/NPS interaction terms.
 4.  **🧠 Model Training & Tuning**: Trains a robust Random Forest model with automated hyperparameter optimization, achieving enterprise-grade performance.
 
 ---
